@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", function () {
           // Store token in localStorage
           localStorage.setItem("token", data.token);
           // Redirect to home page
-          window.location.href = "home.html";
+          window.location.href = "dashboard.html";
         })
         .catch((error) => {
           alert(error.message);

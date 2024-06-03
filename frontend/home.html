@@ -1,13 +1,16 @@
+<!-- edit.html -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Shreeji Marketing Stock Management</title>
+    <title>Edit Page</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="navbar.css" />
   </head>
   <body>
-    <h1>Shreeji Marketing Stock Management</h1>
+    <div id="navbar-placeholder"></div>
+    <h1>Edit Page</h1>
     <div class="stock-container">
       <section class="stock-section">
         <h2>Doors</h2>
@@ -49,5 +52,12 @@
       </section>
     </div>
     <script src="script.js"></script>
+    <script>
+      fetch("navbar.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("navbar-placeholder").innerHTML = data;
+        });
+    </script>
   </body>
 </html>

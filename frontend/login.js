@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
         .then((data) => {
           alert(data.message);
           // Redirect to login page after successful registration
-          window.location.href = "/login.html";
+          window.location.href = "/index.html";
         })
         .catch((error) => {
           alert(error.message);

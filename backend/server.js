@@ -46,9 +46,12 @@ const Product = mongoose.model("Product", productSchema);
 app.post("/register", async (req, res) => {
   const { username, password } = req.body;
 
+  console.log("Received registration request:", username);
+
   try {
     const existingUser = await User.findOne({ username });
     if (existingUser) {
+      console.log("Username already exists:", username);
       return res
         .status(400)
         .json({ success: false, message: "Username already exists" });
@@ -62,7 +65,10 @@ app.post("/register", async (req, res) => {
       .status(201)
       .json({ success: true, message: "User registered successfully" });
   } catch (error) {
-    res.status(500).json({ success: false, message: error.message });
+    console.error("Error during registration:", error);
+    res
+      .status(500)
+      .json({ success: false, message: "Failed to register user" });
   }
 });
 

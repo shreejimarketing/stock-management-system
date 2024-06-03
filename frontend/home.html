@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shreeji Marketing Stock Management</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Shreeji Marketing Stock Management</h1>
+    <div class="stock-container">
+      <section class="stock-section">
+        <h2>Doors</h2>
+        <ul id="door-list"></ul>
+        <div class="add-product">
+          <input type="text" id="add-door-name" placeholder="Name" />
+          <input type="text" id="add-door-size" placeholder="Size" />
+          <input type="text" id="add-door-thickness" placeholder="Thickness" />
+          <input
+            type="number"
+            id="add-door-quantity"
+            min="1"
+            value="1"
+            placeholder="Quantity"
+          />
+        </div>
+        <button id="add-door-btn" class="button_1">Add Door</button>
+      </section>
+      <section class="stock-section">
+        <h2>Plywood</h2>
+        <ul id="plywood-list"></ul>
+        <div class="add-product">
+          <input type="text" id="add-plywood-name" placeholder="Name" />
+          <input type="text" id="add-plywood-size" placeholder="Size" />
+          <input
+            type="text"
+            id="add-plywood-thickness"
+            placeholder="Thickness"
+          />
+          <input
+            type="number"
+            id="add-plywood-quantity"
+            min="1"
+            value="1"
+            placeholder="Quantity"
+          />
+        </div>
+        <button id="add-plywood-btn" class="button_1">Add Plywood</button>
+      </section>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -7,7 +7,7 @@ const path = require("path");
 
 const app = express();
 const port = 3000;
-const uri =
+const MONGO_URI =
   "mongodb+srv://sujal:%40Sujal6021@cluster0.jembkt7.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 
 app.use(bodyParser.json());
@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "../frontend")));
 
 mongoose
-  .connect(uri, {
+  .connect(MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })

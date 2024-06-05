@@ -54,12 +54,29 @@ document.addEventListener("DOMContentLoaded", () => {
       const thickness = addDoorThicknessInput.value;
       const quantity = parseInt(addDoorQuantityInput.value);
 
-      if (name && size && thickness && quantity > 0) {
+      const selectedNameOption =
+        addDoorNameInput.options[addDoorNameInput.selectedIndex];
+      const selectedSizeOption =
+        addDoorSizeInput.options[addDoorSizeInput.selectedIndex];
+      const selectedThicknessOption =
+        addDoorThicknessInput.options[addDoorThicknessInput.selectedIndex];
+
+      if (
+        name &&
+        size &&
+        thickness &&
+        quantity > 0 &&
+        !selectedNameOption.disabled &&
+        !selectedSizeOption.disabled &&
+        !selectedThicknessOption.disabled
+      ) {
         addProduct("door", name, size, thickness, quantity);
-        addDoorNameInput.value = "";
-        addDoorSizeInput.value = "";
-        addDoorThicknessInput.value = "";
-        addDoorQuantityInput.value = "";
+        resetInputs(
+          addDoorNameInput,
+          addDoorSizeInput,
+          addDoorThicknessInput,
+          addDoorQuantityInput
+        );
       } else {
         alert("Please enter valid name, size, thickness, and quantity.");
       }
@@ -71,16 +88,42 @@ document.addEventListener("DOMContentLoaded", () => {
       const thickness = addPlywoodThicknessInput.value;
       const quantity = parseInt(addPlywoodQuantityInput.value);
 
-      if (name && size && thickness && quantity > 0) {
+      const selectedNameOption =
+        addPlywoodNameInput.options[addPlywoodNameInput.selectedIndex];
+      const selectedSizeOption =
+        addPlywoodSizeInput.options[addPlywoodSizeInput.selectedIndex];
+      const selectedThicknessOption =
+        addPlywoodThicknessInput.options[
+          addPlywoodThicknessInput.selectedIndex
+        ];
+
+      if (
+        name &&
+        size &&
+        thickness &&
+        quantity > 0 &&
+        !selectedNameOption.disabled &&
+        !selectedSizeOption.disabled &&
+        !selectedThicknessOption.disabled
+      ) {
         addProduct("plywood", name, size, thickness, quantity);
-        addPlywoodNameInput.value = "";
-        addPlywoodSizeInput.value = "";
-        addPlywoodThicknessInput.value = "";
-        addPlywoodQuantityInput.value = "";
+        resetInputs(
+          addPlywoodNameInput,
+          addPlywoodSizeInput,
+          addPlywoodThicknessInput,
+          addPlywoodQuantityInput
+        );
       } else {
         alert("Please enter valid name, size, thickness, and quantity.");
       }
     });
+
+    function resetInputs(nameInput, sizeInput, thicknessInput, quantityInput) {
+      nameInput.selectedIndex = 0; // Reset to default
+      sizeInput.selectedIndex = 0; // Reset to default
+      thicknessInput.selectedIndex = 0; // Reset to default
+      quantityInput.value = 1; // Reset to default quantity
+    }
 
     function addProduct(type, name, size, thickness, quantity) {
       fetch("/products", {

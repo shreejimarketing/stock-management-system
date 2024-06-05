@@ -1,4 +1,3 @@
-<!-- edit.html -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -6,40 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Edit Page</title>
     <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="navbar.css" />
   </head>
   <body>
     <div id="navbar-placeholder"></div>
     <h1>Edit Page</h1>
     <div class="stock-container">
       <section class="stock-section">
-        <h2>Doors</h2>
-        <ul id="door-list"></ul>
-        <div class="add-product">
-          <input type="text" id="add-door-name" placeholder="Name" />
-          <input type="text" id="add-door-size" placeholder="Size" />
-          <input type="text" id="add-door-thickness" placeholder="Thickness" />
-          <input
-            type="number"
-            id="add-door-quantity"
-            min="1"
-            value="1"
-            placeholder="Quantity"
-          />
-        </div>
-        <button id="add-door-btn" class="button_1">Add Door</button>
-      </section>
-      <section class="stock-section">
         <h2>Plywood</h2>
         <ul id="plywood-list"></ul>
         <div class="add-product">
-          <input type="text" id="add-plywood-name" placeholder="Name" />
-          <input type="text" id="add-plywood-size" placeholder="Size" />
-          <input
-            type="text"
-            id="add-plywood-thickness"
-            placeholder="Thickness"
-          />
+          <select id="add-plywood-name">
+            <option selected disabled>Brand</option>
+            <option value="Champion Max">Champion Max</option>
+            <option value="High Spirit">High Spirit</option>
+            <option value="Benz Club">Benz Club</option>
+            <option value="Centurian">Centurian</option>
+          </select>
+          <select id="add-plywood-size">
+            <option selected disabled>Size</option>
+            <option value="8x4">8x4</option>
+            <option value="7x4">7x4</option>
+            <option value="6x4">6x4</option>
+            <option value="7x3">7x3</option>
+            <option value="6x3">6x3</option>
+          </select>
+          <select id="add-plywood-thickness">
+            <option selected disabled>Thickness</option>
+            <option value="6mm">6mm</option>
+            <option value="8mm">8mm</option>
+            <option value="12mm">12mm</option>
+            <option value="18mm">18mm</option>
+            <option value="19mm B.B.">19mm B.B.</option>
+            <option value="25mm B.B.">25mm B.B.</option>
+          </select>
           <input
             type="number"
             id="add-plywood-quantity"
@@ -50,6 +48,32 @@
         </div>
         <button id="add-plywood-btn" class="button_1">Add Plywood</button>
       </section>
+      <section class="stock-section">
+        <h2>Doors</h2>
+        <ul id="door-list"></ul>
+        <div class="add-product">
+          <select id="add-door-name">
+            <option selected disabled>Name</option>
+            <option value="Single Core">Single Core</option>
+            <option value="Triple Core">Triple Core</option>
+          </select>
+          <select id="add-door-size">
+            <option selected disabled>Size</option>
+          </select>
+          <select id="add-door-thickness">
+            <option selected disabled>Thickness</option>
+            <option value="30mm">30mm</option>
+          </select>
+          <input
+            type="number"
+            id="add-door-quantity"
+            min="1"
+            value="1"
+            placeholder="Quantity"
+          />
+        </div>
+        <button id="add-door-btn" class="button_1">Add Door</button>
+      </section>
     </div>
     <script src="script.js"></script>
     <script>
@@ -58,6 +82,105 @@
         .then((data) => {
           document.getElementById("navbar-placeholder").innerHTML = data;
         });
+
+      // Populate door sizes dynamically
+      const doorSizes = [
+        "72x24",
+        "72x27",
+        "72x30",
+        "72x33",
+        "72x36",
+        "72x39",
+        "72x42",
+        "72x45",
+        "72x48",
+        "75x24",
+        "75x27",
+        "75x30",
+        "75x33",
+        "75x36",
+        "75x39",
+        "75x42",
+        "75x45",
+        "75x48",
+        "78x24",
+        "78x27",
+        "78x30",
+        "78x33",
+        "78x36",
+        "78x39",
+        "78x42",
+        "78x45",
+        "78x48",
+        "81x24",
+        "81x27",
+        "81x30",
+        "81x33",
+        "81x36",
+        "81x39",
+        "81x42",
+        "81x45",
+        "81x48",
+        "84x24",
+        "84x27",
+        "84x30",
+        "84x33",
+        "84x36",
+        "84x39",
+        "84x42",
+        "84x45",
+        "84x48",
+        "87x24",
+        "87x27",
+        "87x30",
+        "87x33",
+        "87x36",
+        "87x39",
+        "87x42",
+        "87x45",
+        "87x48",
+        "90x24",
+        "90x27",
+        "90x30",
+        "90x33",
+        "90x36",
+        "90x39",
+        "90x42",
+        "90x45",
+        "90x48",
+        "93x24",
+        "93x27",
+        "93x30",
+        "93x33",
+        "93x36",
+        "93x39",
+        "93x42",
+        "93x45",
+        "93x48",
+        "96x24",
+        "96x27",
+        "96x30",
+        "96x33",
+        "96x36",
+        "96x39",
+        "96x42",
+        "96x45",
+        "96x48",
+      ];
+
+      const doorSizeSelect = document.getElementById("add-door-size");
+
+      doorSizes.forEach((size) => {
+        const option = document.createElement("option");
+        option.value = size;
+        option.textContent = size;
+        doorSizeSelect.appendChild(option);
+      });
+
+      // Refresh page every 5 seconds
+      //setTimeout(() => {
+      //location.reload();
+      //}, 50000);
     </script>
   </body>
 </html>

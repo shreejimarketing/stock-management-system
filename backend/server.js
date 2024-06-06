@@ -206,6 +206,18 @@ app.put("/products/:id", authenticateToken, async (req, res) => {
     res.status(500).json({ success: false, message: "Error updating product" });
   }
 });
+app.get("/products", authenticateToken, async (req, res) => {
+  try {
+    const brand = req.query.name || ""; // Retrieve brand from query parameters
+    const filter = { addedBy: req.user.userId };
+    if (brand) filter.name = brand;
+
+    const products = await Product.find(filter).populate("addedBy", "username");
+    res.json({ success: true, products });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+});
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);

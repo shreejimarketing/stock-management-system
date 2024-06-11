@@ -134,3 +134,24 @@ ul {
   font-weight: 450;
 }
 
+@media only screen and (max-width: 768px){
+  nav{
+    width: 91% !important;
+  }
+  .stock-container{
+    width: 90%;
+  }
+  .stock-section{
+    width: 100%;
+  }
+  #add-plywood-name ,
+  #add-plywood-size , 
+  #add-plywood-thickness,
+  #add-door-name ,
+  #add-door-size ,
+  #add-door-thickness{
+    height: 40px;
+    border-radius: 10px;
+    background-color: white;
+  }
+}

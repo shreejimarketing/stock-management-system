@@ -126,6 +126,28 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function addProduct(type, name, size, thickness, quantity) {
+      // Check if a product with the same size and thickness already exists
+      const productList = type === "door" ? doorList : plywoodList;
+      const existingProduct = Array.from(productList.children).find(
+        (product) => {
+          const productSize = product
+            .querySelector("p")
+            .textContent.split(": ")[1];
+          const productThickness = product
+            .querySelector("p:nth-of-type(2)")
+            .textContent.split(": ")[1];
+          return productSize === size && productThickness === thickness;
+        }
+      );
+
+      if (existingProduct) {
+        alert(
+          `Product with size ${size} and thickness ${thickness} already exists.`
+        );
+        return;
+      }
+
+      // Proceed with adding the product if it doesn't already exist
       fetch("/products", {
         method: "POST",
         headers: {
@@ -231,28 +253,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
 
-    async function deleteProduct(card, productId) {
-      try {
-        const response = await fetch(`/products/${productId}`, {
-          method: "DELETE",
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        });
-
-        if (!response.ok) {
-          throw new Error("Error deleting product");
-        }
-
-        // Remove the card from the UI
-        card.remove();
-        alert("Product deleted successfully");
-      } catch (error) {
-        console.error("Error deleting product:", error);
-        alert("An error occurred while deleting the product.");
-      }
-    }
-
     function createProductCard(name, size, thickness, quantity, productId) {
       const card = document.createElement("li");
       card.classList.add("product-card");
@@ -302,6 +302,7 @@ document.addEventListener("DOMContentLoaded", () => {
       editQuanBtn.style.borderRadius = "10px";
       editQuanBtn.style.backgroundColor = "green";
       editQuanBtn.style.color = "white";
+      editQuanBtn.style.height = "auto";
       editQuanBtn.addEventListener("click", () => {
         editQuantity(productId);
       });

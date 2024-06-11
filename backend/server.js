@@ -176,49 +176,6 @@ app.put("/products/:id/quantity", authenticateToken, async (req, res) => {
       .json({ success: false, message: "Error updating product quantity" });
   }
 });
-
-app.put("/products/:id", authenticateToken, async (req, res) => {
-  const { id } = req.params;
-  const { name, size, thickness, quantity } = req.body;
-
-  try {
-    const product = await Product.findById(id);
-
-    if (!product) {
-      return res
-        .status(404)
-        .json({ success: false, message: "Product not found" });
-    }
-
-    if (product.addedBy.toString() !== req.user.userId) {
-      return res.status(403).json({ success: false, message: "Unauthorized" });
-    }
-
-    product.name = name;
-    product.size = size;
-    product.thickness = thickness;
-    product.quantity = quantity;
-
-    await product.save();
-    res.json({ success: true, message: "Product updated successfully" });
-  } catch (error) {
-    console.error("Error updating product:", error);
-    res.status(500).json({ success: false, message: "Error updating product" });
-  }
-});
-app.get("/products", authenticateToken, async (req, res) => {
-  try {
-    const brand = req.query.name || ""; // Retrieve brand from query parameters
-    const filter = { addedBy: req.user.userId };
-    if (brand) filter.name = brand;
-
-    const products = await Product.find(filter).populate("addedBy", "username");
-    res.json({ success: true, products });
-  } catch (error) {
-    res.status(500).json({ success: false, message: error.message });
-  }
-});
-
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });

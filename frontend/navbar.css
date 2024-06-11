@@ -2,6 +2,8 @@
 nav {
   background-color: #333;
   color: white;
+  position: sticky;
+  top: 0;
   padding: 1em;
 }
 
@@ -27,4 +29,10 @@ nav ul li a {
 nav ul li a:hover {
   background-color: #575757;
   border-radius: 4px;
+}
+
+@media only screen and (max-width: 768px) {
+  nav{
+    width: 118%;
+  }
 }

@@ -23,17 +23,14 @@ h1, h2 {
   padding: 10px;
   text-align: center;
   border: 1px solid black;
-
 }
 
 .full-width-table th {
   background-color: #f2f2f2;
-  border: 1px solid black;
 }
 
 .full-width-table td {
   border: 1px solid #c1c1c1;
-  border: 1px solid black;
 }
 
 .full-width-table tbody tr:nth-child(even) {
@@ -42,4 +39,20 @@ h1, h2 {
 
 .full-width-table tbody tr:hover {
   background-color: #f1f1f1;
+}
+@media only screen and (max-width: 600px) {
+  .full-width-table th,
+  .full-width-table td {
+    padding: 8px;
+    font-size: 12px;    
+  }
+  .full-width-table{
+    margin-left: 2px;
+    margin-right: 2px;
+    box-sizing: border-box;
+    width: 127%;
+  }
+  h2{
+    width: 118%;
+  }
 }

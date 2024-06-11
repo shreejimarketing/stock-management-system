@@ -16,8 +16,6 @@
       </ul>
     </nav>
     <div id="navbar-placeholder"></div>
-    <h1>Welcome to the Dashboard</h1>
-    <!-- Your dashboard content goes here -->
     <section>
       <h2>Champion Max</h2>
       <table class="full-width-table" border="1">
@@ -286,7 +284,7 @@
         </tbody>
       </table>
     </section>
-    <section>
+    <section id="triple-core">
       <h2>Triple Core</h2>
       <table class="full-width-table" border="1">
         <thead>
@@ -449,7 +447,7 @@
         </tbody>
       </table>
     </section>
-    <section>
+    <section id="single-core">
       <h2>Single Core</h2>
       <table class="full-width-table" border="1">
         <thead>
@@ -682,9 +680,83 @@
             });
           });
         }
+
+        // Fetch door data from the server
+        function fetchDoorData() {
+          fetch("/products?type=door", {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          })
+            .then((response) => response.json())
+            .then((result) => {
+              if (result.success) {
+                const doorProducts = result.products.filter(
+                  (product) => product.type === "door"
+                );
+                doorProducts.forEach((product) => {
+                  const [width, height] = product.size
+                    .split("x")
+                    .map((part) => part.trim());
+
+                  // Find the table for the brand
+                  tables.forEach((table) => {
+                    const sectionBrand = table
+                      .closest("section")
+                      .querySelector("h2")
+                      .textContent.trim();
+                    if (sectionBrand === product.name) {
+                      // Find the row with matching width
+                      const row = Array.from(
+                        table.querySelectorAll("tbody tr")
+                      ).find(
+                        (row) =>
+                          row.querySelector("th").textContent.trim() === width
+                      );
+                      if (row) {
+                        // Find the column with matching height
+                        const colIndex = Array.from(
+                          table.querySelectorAll("thead tr:nth-of-type(2) th")
+                        ).findIndex((th) => th.textContent.trim() === height);
+                        if (colIndex > 0) {
+                          // Write the quantity at the intersection of width and height
+                          row.querySelectorAll("td")[colIndex - 1].textContent =
+                            product.quantity;
+                        }
+                      }
+                    }
+                  });
+                });
+
+                // After processing all products, fill unset quantities with 0
+                tables.forEach((table) => {
+                  Array.from(table.querySelectorAll("tbody tr")).forEach(
+                    (row) => {
+                      Array.from(row.querySelectorAll("td")).forEach(
+                        (cell, index) => {
+                          if (cell.textContent.trim() === "") {
+                            cell.textContent = "0";
+                          }
+                        }
+                      );
+                    }
+                  );
+                });
+              } else {
+                console.error("Error fetching door data:", result.message);
+              }
+            })
+            .catch((error) => {
+              console.error(
+                "An error occurred while fetching door data:",
+                error
+              );
+            });
+        }
+
+        fetchDoorData();
       });
     </script>
-    <script src="script.js"></script>
-    <script src="dashboard.js"></script>
+    <script></script>
   </body>
 </html>

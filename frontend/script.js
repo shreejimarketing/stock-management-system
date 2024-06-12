@@ -327,20 +327,43 @@ document.addEventListener("DOMContentLoaded", () => {
       });
       actions.appendChild(editBtn);
 
-      const deleteBtn = document.createElement("button");
-      deleteBtn.textContent = "Delete";
-      deleteBtn.style.borderRadius = "10px";
-      deleteBtn.style.backgroundColor = "red";
-      deleteBtn.addEventListener("click", () => {
-        if (confirm("Are you sure you want to delete this item?")) {
-          deleteProduct(card, productId);
-        }
-      });
-      actions.appendChild(deleteBtn);
+      // const deleteBtn = document.createElement("button");
+      // deleteBtn.textContent = "Delete";
+      // deleteBtn.style.borderRadius = "10px";
+      // deleteBtn.style.backgroundColor = "red";
+      // deleteBtn.addEventListener("click", () => {
+      //   if (confirm("Are you sure you want to delete this item?")) {
+      //     deleteProduct(card, productId);
+      //   }
+      // });
+      // actions.appendChild(deleteBtn);
 
+      // for moving card up and down
       card.appendChild(actions);
+      const moveUpBtn = document.createElement("button");
+      moveUpBtn.textContent = "Move Up";
+      moveUpBtn.addEventListener("click", () => moveCard(card, "up"));
+      actions.appendChild(moveUpBtn);
+
+      const moveDownBtn = document.createElement("button");
+      moveDownBtn.textContent = "Move Down";
+      moveDownBtn.addEventListener("click", () => moveCard(card, "down"));
+      actions.appendChild(moveDownBtn);
 
       return card;
+    }
+    function moveCard(card, direction) {
+      const productList = card.parentNode;
+      const sibling =
+        direction === "up"
+          ? card.previousElementSibling
+          : card.nextElementSibling;
+
+      if (direction === "up" && sibling) {
+        productList.insertBefore(card, sibling);
+      } else if (direction === "down" && sibling) {
+        productList.insertBefore(sibling, card);
+      }
     }
 
     async function updateQuantity(quantityElement, change, productId) {

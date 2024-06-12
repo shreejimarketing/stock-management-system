@@ -126,23 +126,28 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function addProduct(type, name, size, thickness, quantity) {
-      // Check if a product with the same size and thickness already exists
+      // Check if a product with the same brand, size, and thickness already exists
       const productList = type === "door" ? doorList : plywoodList;
       const existingProduct = Array.from(productList.children).find(
         (product) => {
+          const productBrand = product.querySelector("h3").textContent;
           const productSize = product
-            .querySelector("p")
+            .querySelector("p:nth-of-type(1)")
             .textContent.split(": ")[1];
           const productThickness = product
             .querySelector("p:nth-of-type(2)")
             .textContent.split(": ")[1];
-          return productSize === size && productThickness === thickness;
+          return (
+            productBrand === name &&
+            productSize === size &&
+            productThickness === thickness
+          );
         }
       );
 
       if (existingProduct) {
         alert(
-          `Product with size ${size} and thickness ${thickness} already exists.`
+          `Product with brand ${name}, size ${size}, and thickness ${thickness} already exists.`
         );
         return;
       }

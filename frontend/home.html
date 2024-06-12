@@ -8,72 +8,127 @@
   </head>
   <body>
     <div id="navbar-placeholder"></div>
-    <div class="stock-container">
-      <section class="stock-section">
-        <h2>Plywood</h2>
-        <ul id="plywood-list"></ul>
-        <div class="add-product">
-          <select id="add-plywood-name">
-            <option selected disabled>Brand</option>
-            <option value="Champion Max">Champion Max</option>
-            <option value="High Spirit">High Spirit</option>
-            <option value="Benz Club">Benz Club</option>
-            <option value="Centurian">Centurian</option>
-          </select>
-          <select id="add-plywood-size">
-            <option selected disabled>Size</option>
-            <option value="8x4">8x4</option>
-            <option value="7x4">7x4</option>
-            <option value="6x4">6x4</option>
-            <option value="7x3">7x3</option>
-            <option value="6x3">6x3</option>
-          </select>
-          <select id="add-plywood-thickness">
-            <option selected disabled>Thickness</option>
-            <option value="6mm">6mm</option>
-            <option value="8mm">8mm</option>
-            <option value="12mm">12mm</option>
-            <option value="18mm">18mm</option>
-            <option value="19mm B.B.">19mm B.B.</option>
-            <option value="25mm B.B.">25mm B.B.</option>
-          </select>
-          <input
-            type="number"
-            id="add-plywood-quantity"
-            min="1"
-            value="1"
-            placeholder="Quantity"
-          />
-        </div>
-        <button id="add-plywood-btn" class="button_1">Add Plywood</button>
-      </section>
-      <section class="stock-section">
-        <h2>Doors</h2>
-        <ul id="door-list"></ul>
-        <div class="add-product">
-          <select id="add-door-name">
-            <option selected disabled>Name</option>
-            <option value="Single Core">Single Core</option>
-            <option value="Triple Core">Triple Core</option>
-          </select>
-          <select id="add-door-size">
-            <option selected disabled>Size</option>
-          </select>
-          <select id="add-door-thickness">
-            <option selected disabled>Thickness</option>
-            <option value="30mm">30mm</option>
-          </select>
-          <input
-            type="number"
-            id="add-door-quantity"
-            min="1"
-            value="1"
-            placeholder="Quantity"
-          />
-        </div>
-        <button id="add-door-btn" class="button_1">Add Door</button>
-      </section>
-    </div>
+    <!-- Plywood Section -->
+    <section id="plywood-section" class="stock-container">
+      <h2>Plywood</h2>
+      <!-- Filter Section -->
+      <div class="filter-section">
+        <select id="filter-plywood-brand">
+          <option selected value="">Brand</option>
+          <option value="Champion Max">Champion Max</option>
+          <option value="High Spirit">High Spirit</option>
+          <option value="Benz Club">Benz Club</option>
+          <option value="Centurian">Centurian</option>
+        </select>
+        <select id="filter-plywood-size">
+          <option selected value="">Size</option>
+          <option value="8x4">8x4</option>
+          <option value="7x4">7x4</option>
+          <option value="6x4">6x4</option>
+          <option value="7x3">7x3</option>
+          <option value="6x3">6x3</option>
+        </select>
+        <select id="filter-plywood-thickness">
+          <option selected value="">Thickness</option>
+          <option value="6mm">6mm</option>
+          <option value="8mm">8mm</option>
+          <option value="12mm">12mm</option>
+          <option value="18mm">18mm</option>
+          <option value="19mm B.B.">19mm B.B.</option>
+          <option value="25mm B.B.">25mm B.B.</option>
+        </select>
+      </div>
+      <ul id="plywood-list"></ul>
+      <div class="add-product">
+        <select id="add-plywood-name">
+          <option selected disabled>Brand</option>
+          <option value="Champion Max">Champion Max</option>
+          <option value="High Spirit">High Spirit</option>
+          <option value="Benz Club">Benz Club</option>
+          <option value="Centurian">Centurian</option>
+        </select>
+        <select id="add-plywood-size">
+          <option selected disabled>Size</option>
+          <option value="8x4">8x4</option>
+          <option value="7x4">7x4</option>
+          <option value="6x4">6x4</option>
+          <option value="7x3">7x3</option>
+          <option value="6x3">6x3</option>
+        </select>
+        <select id="add-plywood-thickness">
+          <option selected disabled>Thickness</option>
+          <option value="6mm">6mm</option>
+          <option value="8mm">8mm</option>
+          <option value="12mm">12mm</option>
+          <option value="18mm">18mm</option>
+          <option value="19mm B.B.">19mm B.B.</option>
+          <option value="25mm B.B.">25mm B.B.</option>
+        </select>
+        <input
+          type="number"
+          id="add-plywood-quantity"
+          min="1"
+          value="1"
+          placeholder="Quantity"
+        />
+      </div>
+      <button id="add-plywood-btn" class="button_1">Add Plywood</button>
+    </section>
+    <!-- Doors Section -->
+    <section id="doors-section" class="stock-container" style="display: none">
+      <h2>Doors</h2>
+      <!-- Filter Section -->
+      <div class="filter-section">
+        <select id="filter-door-brand">
+          <option selected value="">Brand</option>
+          <option value="Single Core">Single Core</option>
+          <option value="Triple Core">Triple Core</option>
+        </select>
+        <select id="filter-door-size">
+          <option selected value="">Size</option>
+        </select>
+        <select id="filter-door-thickness">
+          <option selected value="">Thickness</option>
+          <option value="30mm">30mm</option>
+        </select>
+      </div>
+      <ul id="door-list"></ul>
+      <div class="add-product">
+        <select id="add-door-name">
+          <option selected disabled>Name</option>
+          <option value="Single Core">Single Core</option>
+          <option value="Triple Core">Triple Core</option>
+        </select>
+        <select id="add-door-size">
+          <option selected disabled>Size</option>
+        </select>
+        <select id="add-door-thickness">
+          <option selected disabled>Thickness</option>
+          <option value="30mm">30mm</option>
+        </select>
+        <input
+          type="number"
+          id="add-door-quantity"
+          min="1"
+          value="1"
+          placeholder="Quantity"
+        />
+      </div>
+      <button id="add-door-btn" class="button_1">Add Door</button>
+    </section>
+    <!-- Main Navbar -->
+    <nav class="navbar">
+      <ul>
+        <li>
+          <a href="#" id="plywood-link" onclick="showSection('plywood')"
+            >Plywood</a
+          >
+        </li>
+        <li>
+          <a href="#" id="doors-link" onclick="showSection('doors')">Doors</a>
+        </li>
+      </ul>
+    </nav>
     <script src="script.js"></script>
     <script>
       fetch("navbar.html")
@@ -168,18 +223,29 @@
       ];
 
       const doorSizeSelect = document.getElementById("add-door-size");
+      const filterDoorSizeSelect = document.getElementById("filter-door-size");
 
       doorSizes.forEach((size) => {
         const option = document.createElement("option");
         option.value = size;
         option.textContent = size;
         doorSizeSelect.appendChild(option);
+        filterDoorSizeSelect.appendChild(option.cloneNode(true));
       });
 
-      // Refresh page every 5 seconds
-      //setTimeout(() => {
-      //location.reload();
-      //}, 50000);
+      // Function to toggle section visibility
+      function showSection(section) {
+        if (section === "plywood") {
+          document.getElementById("plywood-section").style.display = "block";
+          document.getElementById("doors-section").style.display = "none";
+        } else if (section === "doors") {
+          document.getElementById("plywood-section").style.display = "none";
+          document.getElementById("doors-section").style.display = "block";
+        }
+      }
+
+      // Show Plywood section by default
+      showSection("plywood");
     </script>
   </body>
 </html>

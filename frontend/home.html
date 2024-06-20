@@ -9,35 +9,43 @@
   </head>
   <body>
     <div id="navbar-placeholder"></div>
+    <!-- Scroll To Bottom Button -->
+    <button class="scroll-to-bottom" onclick="scrollToBottom()">Down</button>
+
     <!-- Plywood Section -->
     <section id="plywood-section" class="stock-container">
-      <h2>Plywood</h2>
+      <h2 id="plywood-heading">Plywood</h2>
       <!-- Filter Section -->
       <div class="filter-section">
-        <select id="filter-plywood-brand">
-          <option selected value="">Brand</option>
-          <option value="Champion Max">Champion Max</option>
-          <option value="High Spirit">High Spirit</option>
-          <option value="Benz Club">Benz Club</option>
-          <option value="Centurian">Centurian</option>
-        </select>
-        <select id="filter-plywood-size">
-          <option selected value="">Size</option>
-          <option value="8x4">8x4</option>
-          <option value="7x4">7x4</option>
-          <option value="6x4">6x4</option>
-          <option value="7x3">7x3</option>
-          <option value="6x3">6x3</option>
-        </select>
-        <select id="filter-plywood-thickness">
-          <option selected value="">Thickness</option>
-          <option value="6mm">6mm</option>
-          <option value="8mm">8mm</option>
-          <option value="12mm">12mm</option>
-          <option value="18mm">18mm</option>
-          <option value="19mm B.B.">19mm B.B.</option>
-          <option value="25mm B.B.">25mm B.B.</option>
-        </select>
+        <div>
+          <h2 style="padding: 0; margin: 0">Filter Plywoods</h2>
+        </div>
+        <div>
+          <select id="filter-plywood-brand">
+            <option selected value="" disabled>Brand</option>
+            <option value="Champion Max">Champion Max</option>
+            <option value="High Spirit">High Spirit</option>
+            <option value="Benz Club">Benz Club</option>
+            <option value="Centurian">Centurian</option>
+          </select>
+          <select id="filter-plywood-size">
+            <option selected value="" disabled>Size</option>
+            <option value="8x4">8x4</option>
+            <option value="7x4">7x4</option>
+            <option value="6x4">6x4</option>
+            <option value="7x3">7x3</option>
+            <option value="6x3">6x3</option>
+          </select>
+          <select id="filter-plywood-thickness">
+            <option selected value="" disabled>Thickness</option>
+            <option value="6mm">6mm</option>
+            <option value="8mm">8mm</option>
+            <option value="12mm">12mm</option>
+            <option value="18mm">18mm</option>
+            <option value="19mm B.B.">19mm B.B.</option>
+            <option value="25mm B.B.">25mm B.B.</option>
+          </select>
+        </div>
       </div>
       <ul id="plywood-list"></ul>
       <div class="add-product">
@@ -80,18 +88,23 @@
       <h2>Doors</h2>
       <!-- Filter Section -->
       <div class="filter-section">
-        <select id="filter-door-brand">
-          <option selected value="">Brand</option>
-          <option value="Single Core">Single Core</option>
-          <option value="Triple Core">Triple Core</option>
-        </select>
-        <select id="filter-door-size">
-          <option selected value="">Size</option>
-        </select>
-        <select id="filter-door-thickness">
-          <option selected value="">Thickness</option>
-          <option value="30mm">30mm</option>
-        </select>
+        <div>
+          <h2 style="padding: 0; margin: 0">Filter Doors</h2>
+        </div>
+        <div>
+          <select id="filter-door-brand">
+            <option selected value="" disabled>Brand</option>
+            <option value="Single Core">Single Core</option>
+            <option value="Triple Core">Triple Core</option>
+          </select>
+          <select id="filter-door-size">
+            <option selected value="" disabled>Size</option>
+          </select>
+          <select id="filter-door-thickness">
+            <option selected value="" disabled>Thickness</option>
+            <option value="30mm">30mm</option>
+          </select>
+        </div>
       </div>
       <ul id="door-list"></ul>
       <div class="add-product">
@@ -210,6 +223,7 @@
         "93x36",
         "93x39",
         "93x42",
+
         "93x45",
         "93x48",
         "96x24",
@@ -243,6 +257,15 @@
           document.getElementById("plywood-section").style.display = "none";
           document.getElementById("doors-section").style.display = "block";
         }
+        scrollToBottom(); // Ensure page scrolls to top when switching sections
+      }
+
+      // Function to scroll to the top of the page
+      function scrollToBottom() {
+        window.scrollTo({
+          top: document.body.scrollHeight,
+          behavior: "smooth",
+        });
       }
 
       // Show Plywood section by default

@@ -4,6 +4,23 @@ body {
   padding: 0;
   background-image: url("back1.avif");
 }
+.filter-section{
+  border-bottom: 2px solid rgb(112, 107, 107);
+  border-top: 2px solid rgb(112, 107, 107);
+  height: auto;
+  padding: 30px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  gap: 20px;
+  flex-direction: column;
+}
+.filter-section select{
+  border-radius: 10px;
+  padding: 10px;
+}
 
 h1 {
   text-align: center;
@@ -31,6 +48,7 @@ h2 {
   text-align: center;
   font-size: 30px;
 }
+
 
 ul {
   list-style: none;
@@ -160,7 +178,38 @@ ul {
   color: #fff;
   text-decoration: none;
 }
-
+.scroll-to-bottom {
+  position: fixed;
+  top: 60px;
+  right: 20px;
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  width: auto;
+  height: 40px;
+  font-size: 18px;
+  text-align: center;
+  line-height: 40px;
+  cursor: pointer;
+  display: block; /* Initially hidden */
+  animation: pulse 1.5s ease infinite;
+}
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.scroll-to-bottom:hover {
+  background-color: #0056b3;
+  animation-play-state: paused;
+}
 
 @media only screen and (max-width: 768px){
   nav{
@@ -187,4 +236,44 @@ ul {
     padding: 0;
     margin: 0;
   }
+  .filter-section{
+    border-bottom: 1px solid rgb(112, 107, 107);
+    border-top: 1px solid rgb(112, 107, 107);
+    height: auto;
+    padding: 0;
+    padding-bottom: 20px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    gap: 20px;
+    flex-direction: column;
+  }
+  .filter-section select{
+    border-radius: 10px;
+    padding: 10px;
+  }
+  h2{
+    margin: 10px;
+    padding: 0;
+  }
+  .scroll-to-bottom {
+    position: sticky;
+    top: 60px;
+    right: 20px;
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    text-wrap: wrap;
+    width: auto;
+    height: 40px;
+    font-size: 15px;
+    text-align: center;
+    line-height: 40px;
+    cursor: pointer;
+    display: block;
+  }
+  
 }
